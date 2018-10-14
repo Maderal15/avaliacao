@@ -17,25 +17,18 @@ public class TesteBanco {
 		try {
 			context = new InitialContext();
 
-			Avaliacao avaliacao = (Avaliacao) context.lookup("QuestaoBean/remote");
+			Avaliacao avaliacao = (Avaliacao) context.lookup("AvaliacaoBean/remote");
 
-			
-			
 			List<Questao> lista =  avaliacao.obterQuestoes(1);
-			List<Resposta> lista2 = avaliacao.obterResposta();
-			
-			for (Resposta resposta : lista2) {
-				System.out.println(resposta.getDescricao());
-			}
-			
-			
-			for (Questao questao2 : lista) {
-				System.out.println(questao2.getDescricao());
+			//2-
+			for (Questao questao : lista) {
+				System.out.println(questao.getDescricao());
+				for (Resposta resposta : questao.getRespostas()) {
+					System.out.println(resposta.getDescricao());
+				}
 			}
 			
 						
-			//System.out.println("Quantidade de chamados abertos: " + questaoRemote.recuperarTodos().size());
-
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}

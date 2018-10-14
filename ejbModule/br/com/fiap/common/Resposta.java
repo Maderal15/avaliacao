@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "resposta")
-@EntityListeners(QuestaoListener.class)
+@EntityListeners(AvaliacaoListener.class)
 public class Resposta implements Serializable {
 
 	private static final long serialVersionUID = 113L;
