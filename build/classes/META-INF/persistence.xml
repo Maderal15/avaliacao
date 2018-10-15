@@ -7,12 +7,14 @@
 
 	<persistence-unit name="prova">
 		<jta-data-source>java:/MySqlDS</jta-data-source>
+		<class>br.com.fiap.common.Questao</class>
+		<class>br.com.fiap.common.Resposta</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
 			<property name="hibernate.showsql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			
 		</properties>
-		
 	</persistence-unit>
 
 </persistence>

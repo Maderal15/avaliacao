@@ -1,13 +1,11 @@
 package br.com.fiap.common;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,16 +13,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "questao")
-@EntityListeners(AvaliacaoListener.class)
+@XmlRootElement
 public class Questao implements Serializable {
+
+	private static final long serialVersionUID = -3694111958200232234L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)																																			//@Column(name="codigo")
 	@Column(name = "codigo")
-	private Integer id;
+	private Integer codigo;
 	
 	@Column(name = "codigoavaliacao")
 	private Integer codigoAvaliacao;
@@ -32,7 +33,7 @@ public class Questao implements Serializable {
 	@Column(name = "descricao")
 	private String descricao;
 	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = Resposta.class, mappedBy = "questao")
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "questao")
     private List<Resposta> respostas;
 	
 	@Transient
@@ -63,11 +64,11 @@ public class Questao implements Serializable {
 	}
 	
 	public Integer getId() {
-		return id;
+		return codigo;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.codigo = id;
 	}
 	
 	public Resposta getRespostaSelecionada() {
